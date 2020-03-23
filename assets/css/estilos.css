@@ -1,0 +1,75 @@
+.fa {
+    font-family: 'Font Awesome 5 Free';
+    line-height: 48px;
+}
+
+.fa-universal-access::before {
+    content: '\f29a';
+}
+
+.fa-globe::before {
+    content: '\f0ac';
+}
+
+#nprogress .bar {
+    background: #e9204f;
+}
+
+.linha-esquerda, .linha-direita {
+    cursor: initial;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.fake-test {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: initial;
+}
+
+.fake-test:focus {
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.fake-test::before {
+    content: '';
+    padding: 1rem;
+}
+
+@media (max-width: 558px) {
+    .linha-esquerda, .linha-direita {
+        display: none;
+    }
+}
+
+#form1 {
+    padding-top: 0;
+}
+
+/* 
+ * * SELECT **
+*/
+
+/* The container must be positioned relative: */
+
+select {
+    /* margin-bottom: 1em; */
+    padding: 1rem 0rem;
+    padding-bottom: calc(1rem - 4px) !important;
+    border: 0;
+    border-bottom: 2px solid #e9204f;
+    /* font-weight: bold; */
+    width: 100%;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+  }
+  select:focus, select:active {
+    outline: 0;
+    border-bottom-color: #e9204f;
+  }
