@@ -58,7 +58,7 @@ var indexApp = new Vue({
 				if (response.data.success) {
 					indexApp.sucesso();
 				} else {
-					indexApp.erro(error);
+					indexApp.erro("Erro no servidor");
 				}
 			}).catch(function(error) {
 				indexApp.erro(error);
