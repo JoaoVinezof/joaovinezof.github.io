@@ -41,7 +41,7 @@ var indexApp = new Vue({
 			this.enviando = true;
 
 			var formData = new FormData($('#form-contato')[0]);
-			var url = "http://joaovinezof.000webhostapp.com/contato.php";
+			var url = "https://joaovinezof.000webhostapp.com/contato.php";
 			axios.post(url, formData).then(function(response) {
 				console.log(response);
 			}).catch(function(error) {
