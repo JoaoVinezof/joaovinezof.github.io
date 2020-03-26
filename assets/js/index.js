@@ -45,6 +45,8 @@ var indexApp = new Vue({
 			axios.post(url, formData).then(function(response) {
 				console.log(response);
 			}).catch(function(error) {
+				NProgress.done();
+				$("#error-feedback").slideInDown();
 				console.log(error);
 			});
 		}
