@@ -59,14 +59,14 @@ var indexApp = new Vue({
 					var data = JSON.parse(response.data);
 
 					if (data.success) {
-						app.sucesso();
+						indexApp.sucesso();
 					}
 				} catch (error) {
-					app.erro(error);
+					indexApp.erro(error);
 				}
 				console.log(response);
 			}).catch(function(error) {
-				app.erro(error);
+				indexApp.erro(error);
 			});
 		}
 	}
