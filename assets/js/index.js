@@ -37,18 +37,36 @@ var indexApp = new Vue({
 		}
 	},
 	methods: {
+		erro: function(error) {
+			NProgress.done();
+			$("#success-feedback").css('display', 'none');
+			$("#error-feedback").slideDown();
+			indexApp.enviando = false;
+			console.log(error);
+		},
+		sucesso: function() {
+			$("#error-feedback").css('display', 'none');
+			$("#success-feedback").slideDown();
+			indexApp.enviando = false;
+		},
 		enviar: function() {
 			this.enviando = true;
 
 			var formData = new FormData($('#form-contato')[0]);
 			var url = "https://joaovinezof.000webhostapp.com/contato.php";
 			axios.post(url, formData).then(function(response) {
+				try {
+					var data = JSON.parse(response.data);
+
+					if (data.success) {
+						app.sucesso();
+					}
+				} catch (error) {
+					app.erro(error);
+				}
 				console.log(response);
 			}).catch(function(error) {
-				NProgress.done();
-				$("#error-feedback").slideDown();
-				indexApp.enviando = false;
-				console.log(error);
+				app.erro(error);
 			});
 		}
 	}
