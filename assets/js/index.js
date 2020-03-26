@@ -46,7 +46,7 @@ var indexApp = new Vue({
 				console.log(response);
 			}).catch(function(error) {
 				NProgress.done();
-				$("#error-feedback").slideInDown();
+				$("#error-feedback").slideDown();
 				indexApp.enviando = false;
 				console.log(error);
 			});
