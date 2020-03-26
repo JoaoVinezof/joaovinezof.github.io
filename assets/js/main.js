@@ -29,6 +29,11 @@ today = yyyy + '-' + mm + '-' + dd;
 
 var app = new Vue({
 	el: '#app',
+	created: function() {
+		this.trocarPagina('index', false, function() {
+			$('body').removeClass('d-none');
+		});
+	},
 	data: {
 		paginaVirtual: 'index',
 		// hoje: today
@@ -39,13 +44,13 @@ var app = new Vue({
 				$("#menu-meuTrabalho").click();
 			}
 		},
-		trocarPagina: function (pagina, ancora) {
+		trocarPagina: function (pagina, ancora, _callback) {
 
 			let pasta = "paginas";
 			let extensao = "html";
 			let url = pasta + '/' + pagina + '.' + extensao;
 
-			if (ancora != undefined || typeof ancora != 'undefined') {
+			if (ancora != undefined || typeof ancora != 'undefined' || ancora != false) {
 
 				var callback = function() {
 					setTimeout(function() {
@@ -62,6 +67,8 @@ var app = new Vue({
 				$("#area-pagina").html(response.data);
 				$("title").html($("#meta .title").val());
 				callback();
+
+				if (typeof _callback == 'function') _callback();
 			}).catch(function (error) {
 				console.log(error);
 			});
