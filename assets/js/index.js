@@ -55,16 +55,11 @@ var indexApp = new Vue({
 			var formData = new FormData($('#form-contato')[0]);
 			var url = "https://joaovinezof.000webhostapp.com/contato.php";
 			axios.post(url, formData).then(function(response) {
-				try {
-					var data = JSON.parse(response.data);
-
-					if (data.success) {
-						indexApp.sucesso();
-					}
-				} catch (error) {
+				if (response.data.success) {
+					indexApp.sucesso();
+				} else {
 					indexApp.erro(error);
 				}
-				console.log(response);
 			}).catch(function(error) {
 				indexApp.erro(error);
 			});
