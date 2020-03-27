@@ -56,8 +56,6 @@ var app = new Vue({
 			let extensao = "html";
 			let url = pasta + '/' + pagina + '.' + extensao;
 
-			console.log(_callback);
-
 			if ((ancora != undefined || typeof ancora != 'undefined' || ancora != false) && typeof _callback != "boolean" && _callback != false) {
 
 				var callback = function() {
