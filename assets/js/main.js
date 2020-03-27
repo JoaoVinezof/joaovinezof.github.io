@@ -35,22 +35,30 @@ var app = new Vue({
 		});
 	},
 	data: {
-		paginaVirtual: 'index',
+		paginaVirtual: '',
 		// hoje: today
 	},
 	methods: {
 		corrigirScroll: function (id) {
-			if (id == 'meuTrabalho') {
-				$("#menu-meuTrabalho").click();
-			}
+			$("#menu-" + id).click();
 		},
 		trocarPagina: function (pagina, ancora, _callback) {
+
+			if (this.paginaVirtual == pagina) {
+				if (ancora != undefined || typeof ancora != 'undefined' || ancora != false) {
+					$("#menu-" + ancora).click();
+					if (typeof _callback == 'function') _callback();
+					return true;
+				}
+			}
 
 			let pasta = "paginas";
 			let extensao = "html";
 			let url = pasta + '/' + pagina + '.' + extensao;
 
-			if (ancora != undefined || typeof ancora != 'undefined' || ancora != false) {
+			console.log(_callback);
+
+			if ((ancora != undefined || typeof ancora != 'undefined' || ancora != false) && typeof _callback != "boolean" && _callback != false) {
 
 				var callback = function() {
 					setTimeout(function() {
@@ -58,7 +66,7 @@ var app = new Vue({
 					}, 500);
 				}
 			} else {
-				var callback = function() {};
+				var callback = false;
 			}
 
 			axios.get(url).then(function (response) {
@@ -66,8 +74,8 @@ var app = new Vue({
 				$('html, body').scrollTop(0);
 				$("#area-pagina").html(response.data);
 				$("title").html($("#meta .title").val());
-				callback();
-
+				if (typeof callback == 'function') callback();
+				
 				if (typeof _callback == 'function') _callback();
 			}).catch(function (error) {
 				console.log(error);

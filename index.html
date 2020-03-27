@@ -85,21 +85,17 @@
 										@click.prevent="trocarPagina('index')">Home</a>
 								</li>
 								<li class="nav-item"><a id="menu-meuTrabalho" class="nav-link link
-										text-white display-4" href="#meuTrabalho">Meu Trabalho</a></li>
-								<li class="nav-item"><a class="nav-link link text-white display-4"
+										text-white display-4" href="#meuTrabalho" id="menu-meuTrabalho" @click.prevent="trocarPagina('index', 'meuTrabalho')">Meu Trabalho</a></li>
+								<li class="nav-item"><a class="nav-link link text-white display-4" id="menu-habilidades" @click.prevent="trocarPagina('index', 'habilidades')"
 										href="#habilidades" aria-expanded="false">
 										Habilidades</a></li>
-								<li class="nav-item"><a class="nav-link link text-white display-4"
+								<li class="nav-item"><a class="nav-link link text-white display-4" id="menu-servicos" @click.prevent="trocarPagina('index', 'servicos', function() { app.corrigirScroll('servicos') })"
 										href="#servicos">
 										Serviços</a></li>
 
 								<li class="nav-item">
 									<a class="nav-link link text-white display-4" href="#orcamento"
-										v-if="paginaVirtual != 'index'">
-										Orçamento
-									</a>
-									<a class="nav-link link text-white display-4" href="orcamento.html"
-										v-else @click.prevent="trocarPagina('orcamento')">
+										id="menu-orcamento" @click.stop.prevent="trocarPagina('orcamento', 'orcamento', false)">
 										Orçamento
 									</a>
 								</li>
